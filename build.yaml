@@ -18,4 +18,6 @@
 #
 ---
 include:
-  - board: planck_rev6
+  - board: adafruit_kb2040
+    shield: mf68
+  - board: plank_rev6
