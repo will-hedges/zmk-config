@@ -11,8 +11,6 @@
 #define FN    4
 #define META  5
 
-#define CTLALTDEL LC(LA(DEL))
-
 
 / {
     behaviors {
@@ -65,10 +63,10 @@
         
         fn {
             bindings = <
-                CTLALTDEL  &kp F1       &kp F2     &kp F3  &kp F4  &kp F5  &kp F6  &kp F7  &kp F8  &kp F9    &kp F10    &trans
-                &trans     &kp F11      &kp F12    &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans     &trans
-                &trans     &trans       &trans     &trans  &trans  &trans  &trans  &trans  &trans  &trans    &kp PG_UP  &trans
-                &tog QWER  &bootloader  &tog WORK  &trans  &trans  &trans  &trans  &trans  &trans  &kp HOME  &kp PG_DN  &kp END
+                LC(LA(DEL))  &kp F1       &kp F2     &kp F3  &kp F4  &kp F5  &kp F6  &kp F7  &kp F8  &kp F9    &kp F10    &trans
+                &trans       &kp F11      &kp F12    &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans     &trans
+                &trans       &trans       &trans     &trans  &trans  &trans  &trans  &trans  &trans  &trans    &kp PG_UP  &trans
+                &tog QWER    &bootloader  &tog WORK  &trans  &trans  &trans  &trans  &trans  &trans  &kp HOME  &kp PG_DN  &kp END
             >;
         };
 
