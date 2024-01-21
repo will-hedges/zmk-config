@@ -10,6 +10,15 @@
 #define FN1     1
 
 / {
+    behaviors {
+        gresc: grave_escape {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp ESC>, <&kp GRAVE>;
+            mods = <(MOD_LGUI|MOD_LSFT|MOD_RGUI|MOD_RSFT)>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -19,15 +28,15 @@
 // | TAB   |  Q  |  W  |  E  |  R  |  T  |  Y  |  U  |  I  |  O  |  P  |  [  |  ]  |   \    |   |     |     |
 // | FN1CAPS|  A  |  S  |  D  |  F  |  G  |  H  |  J  |  K  |  L  |  ;  |  '  |    ENTER    |
 // |  SHIFT   |  Z  |  X  |  C  |  V  |  B  |  N  |  M  |  ,  |  .  |  /  |      SHIFT      |   | UP  |
-// | LCTL  | LGUI  | LALT  |            SPACE                | RALT  | MO(1) | RCTL  |    | LEFT| DOWN| RGHT|
+// | LCTL  | LGUI  |ALTPGUP|            SPACE                |ALTPGDN| MO(1) | RCTL  |    | LEFT| DOWN| RGHT|
 // -----------------------------------------------------------------------------------------------------------
 
             bindings = <
-    &mt ESC GRAVE  &kp N1    &kp N2    &kp N3  &kp N4  &kp N5  &kp N6     &kp N7  &kp N8     &kp N9        &kp N0    &kp MINUS  &kp EQUAL   &kp BSPC        &none     &none
-    &kp TAB          &kp Q     &kp W     &kp E   &kp R   &kp T   &kp Y      &kp U   &kp I      &kp O         &kp P     &kp LBKT   &kp RBKT  &kp BSLH        &none     &none
-    &mt FN1 CAPS      &kp A     &kp S     &kp D   &kp F   &kp G   &kp H      &kp J   &kp K      &kp L         &kp SEMI  &kp SQT             &kp RET
-    &kp LSHFT           &kp Z     &kp X     &kp C   &kp V   &kp B   &kp N      &kp M   &kp COMMA  &kp DOT       &kp FSLH                    &kp RSHFT       &kp UP
-    &kp LCTRL        &kp LGUI  &mt LALT PG_UP                 &kp SPACE                          &kp RALT PG_DN  &mo FN1   &kp RCTRL              &kp LEFT  &kp DOWN  &kp RIGHT
+    &gresc     &kp N1    &kp N2    &kp N3  &kp N4  &kp N5  &kp N6     &kp N7  &kp N8     &kp N9        &kp N0    &kp MINUS  &kp EQUAL   &kp BSPC        &none     &none
+    &kp TAB      &kp Q     &kp W     &kp E   &kp R   &kp T   &kp Y      &kp U   &kp I      &kp O         &kp P     &kp LBKT   &kp RBKT  &kp BSLH        &none     &none
+    &lt FN1 CAPS  &kp A     &kp S     &kp D   &kp F   &kp G   &kp H      &kp J   &kp K      &kp L         &kp SEMI  &kp SQT             &kp RET
+    &kp LSHFT       &kp Z     &kp X     &kp C   &kp V   &kp B   &kp N      &kp M   &kp COMMA  &kp DOT       &kp FSLH                    &kp RSHFT       &kp UP
+    &kp LCTRL    &kp LGUI  &mt LALT PG_UP                 &kp SPACE                          &mt RALT PG_DN  &mo FN1   &kp RCTRL              &kp LEFT  &kp DOWN  &kp RIGHT
             >;
         };
         

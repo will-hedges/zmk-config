@@ -9,5 +9,10 @@ manifest:
       remote: zmkfirmware
       revision: main
       import: app/west.yml
+    # Add the name of the repository as a project
+    - name: mf68-shield-module
+      remote: will-hedges
+      # revision is the name of the branch you want to use
+      revision: main
   self:
     path: config
