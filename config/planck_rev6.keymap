@@ -4,12 +4,18 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 
+
 #define WORK  0
 #define QWER  1
 #define LOWER 2
 #define RAISE 3
 #define FN    4
 #define META  5
+
+
+&lt {
+    flavor = "hold-preferred";
+};
 
 
 / {
@@ -20,17 +26,27 @@
             bindings = <&kp ESC>, <&kp GRAVE>;
             mods = <(MOD_LGUI|MOD_LSFT|MOD_RGUI|MOD_RSFT)>;
         };
+
+        tpht: tap_preferred_hold-tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
     };
+
 
     keymap {
         compatible = "zmk,keymap";
 
         work {
             bindings = <
-                &gresc          &kp Q          &kp W     &kp E      &kp R      &kp T      &kp Y       &kp U      &mt F8 I        &kp O     &kp P     &kp BSPC
-                &kp TAB         &kp A          &kp S     &kp D      &mt F11 F  &mt END G  &mt HOME H  &mt F12 J  &kp K           &kp L     &kp SEMI  &kp SQT
-                &mt LSHFT CAPS  &kp Z          &kp X     &kp C      &kp V      &kp B      &kp N       &kp M      &kp COMMA       &kp DOT   &kp UP    &mt RSHFT ENTER
-                &kp LCTRL       &lt META LGUI  &kp LALT  &lt FN F9  &mo LOWER  &kp SPACE  &kp SPACE   &mo RAISE  &mt RGUI RCTRL  &kp LEFT  &kp DOWN  &kp RIGHT
+                &gresc          &kp Q          &kp W     &kp E      &kp R            &kp T        &kp Y         &kp U            &tpht F8 I      &kp O     &kp P     &kp BSPC
+                &kp TAB         &kp A          &kp S     &kp D      &tpht F11 F      &tpht END G  &tpht HOME H  &tpht F12 J      &kp K           &kp L     &kp SEMI  &kp SQT
+                &mt LSHFT CAPS  &kp Z          &kp X     &kp C      &kp V            &kp B        &kp N         &kp M            &kp COMMA       &kp DOT   &kp UP    &mt RSHFT ENTER
+                &kp LCTRL       &lt META LGUI  &kp LALT  &lt FN F9  &lt LOWER PG_DN  &kp SPACE    &kp SPACE     &lt RAISE PG_UP  &mt RGUI RCTRL  &kp LEFT  &kp DOWN  &kp RIGHT
             >;
         };
 
@@ -45,10 +61,10 @@
 
         lower {
             bindings = <
-                &kp ESC  &kp N1     &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7     &kp N8     &kp N9    &kp N0    &trans  
-                &kp DEL  &kp GRAVE  &trans  &trans  &trans  &trans  &trans  &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT  &kp BSLH 
-                &trans   &trans     &trans  &trans  &trans  &trans  &trans  &trans     &trans     &trans    &kp SLSH  &trans  
-                &trans   &trans     &trans  &trans  &trans  &trans  &trans  &trans     &trans     &trans    &trans    &trans
+                &kp ESC  &kp N1     &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7     &kp N8     &kp N9    &kp N0     &trans  
+                &kp DEL  &kp GRAVE  &trans  &trans  &trans  &trans  &trans  &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT   &kp BSLH 
+                &trans   &trans     &trans  &trans  &trans  &trans  &trans  &trans     &trans     &trans    &kp SLASH  &trans  
+                &trans   &trans     &trans  &trans  &trans  &trans  &trans  &trans     &trans     &trans    &trans     &trans
             >;
         };
 
@@ -59,7 +75,7 @@
                 &trans  &trans     &trans  &trans    &trans    &trans     &trans     &trans     &trans     &trans    &kp QMARK  &trans
                 &trans  &trans     &trans  &trans    &trans    &trans     &trans     &trans     &trans     &trans    &trans     &trans
             >;
-        }
+        };
         
         fn {
             bindings = <
@@ -72,12 +88,12 @@
 
         meta {
             bindings = <
-            &trans     &trans    &trans    &trans  &trans     &kp N7  &kp N8  &kp N9   &mt SLSH MINUS  &trans    &trans     &trans
-            &kp TAB    &trans    &trans    &trans  &trans     &kp N4  &kp N5  &kp N6   &mt ASTRK PLUS  &trans    &kp COLON  &kp DEL
-            &tog META  &trans    &trans    &trans  &trans     &kp N1  &kp N2  &kp N3   &kp ENTER       &kp DOT   &kp UP     &trans
-            &kp LCTRL  &kp LGUI  &kp LALT  &trans  &tog META  &kp N0  &kp N0  &kp DOT  &kp ENTER       &kp LEFT  &kp DOWN   &kp RIGHT
+            &trans     &trans    &trans    &trans  &trans     &kp N7  &kp N8  &kp N9   &tpht SLASH MINUS  &trans    &trans     &trans
+            &kp TAB    &trans    &trans    &trans  &trans     &kp N4  &kp N5  &kp N6   &tpht ASTRK PLUS   &trans    &kp COLON  &kp DEL
+            &tog META  &trans    &trans    &trans  &trans     &kp N1  &kp N2  &kp N3   &kp ENTER        &kp DOT   &kp UP     &trans
+            &kp LCTRL  &kp LGUI  &kp LALT  &trans  &tog META  &kp N0  &kp N0  &kp DOT  &kp ENTER        &kp LEFT  &kp DOWN   &kp RIGHT
             >;
-        }
+        };
     };
 };
 
