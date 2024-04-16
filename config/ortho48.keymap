@@ -3,10 +3,9 @@
 
 
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/backlight.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/outputs.h>
 
 
 #define WORK  0
@@ -15,8 +14,7 @@
 #define RAISE 3
 #define FN    4
 #define META  5
-#define BLUE  6
-#define LOCK  7
+#define OPT   6
 
 
 &lt {
@@ -94,10 +92,10 @@
         fn {
             bindings = <
             
-                &kp LC(LA(DEL))  &kp F1   &kp F2   &kp F3  &kp F4  &kp F5  &kp F6  &kp F7  &kp F8  &kp F9     &kp F10    &trans
-                &trans           &kp F11  &kp F12  &trans  &trans  &trans  &trans  &trans  &trans  &tog LOCK  &trans     &trans
-                &trans           &trans   &trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans     &kp PG_UP  &trans
-                &trans           &trans   &trans   &trans  &trans  &trans  &trans  &trans  &trans  &kp HOME   &kp PG_DN  &kp END
+                &trans           &kp F1   &kp F2   &kp F3  &kp F4  &kp F5  &kp F6  &kp F7  &kp F8  &kp F9    &kp F10    &trans
+                &kp LC(LA(DEL))  &kp F11  &kp F12  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans     &trans
+                &trans           &trans   &trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans    &kp PG_UP  &trans
+                &trans           &trans   &trans   &trans  &trans  &trans  &trans  &trans  &trans  &kp HOME  &kp PG_DN  &kp END
             
             >;
         };
@@ -105,35 +103,22 @@
         meta {
             bindings = <
             
-                &kp TAB  &tog QWER  &trans  &trans    &trans     &kp N7  &kp N8  &kp N9   &tpht SLASH MINUS  &trans    &trans     &trans
-                &trans   &trans     &trans  &trans    &trans     &kp N4  &kp N5  &kp N6   &tpht ASTRK PLUS   &trans    &kp COLON  &kp DEL
-                &trans   &trans     &trans  &trans    &trans     &kp N1  &kp N2  &kp N3   &kp ENTER          &kp DOT   &kp UP     &trans
-                &trans   &trans     &trans  &mo BLUE  &tog META  &kp N0  &kp N0  &kp DOT  &kp ENTER          &kp LEFT  &kp DOWN   &kp RIGHT
+                &kp TAB  &none  &none  &none    &none      &kp N7  &kp N8  &kp N9   &tpht SLASH MINUS  &none     &none      &none
+                &kp ESC  &none  &none  &none    &none      &kp N4  &kp N5  &kp N6   &tpht ASTRK PLUS   &none     &kp COLON  &kp DEL
+                &none    &none  &none  &none    &none      &kp N1  &kp N2  &kp N3   &kp ENTER          &kp DOT   &kp UP     &trans
+                &none    &none  &none  &mo OPT  &tog META  &kp N0  &kp N0  &kp DOT  &kp ENTER          &kp LEFT  &kp DOWN   &kp RIGHT
             
             >;
         };
 
-        blue {
-            bindings = <
-            
-                &trans          &bt BT_SEL 1  &bt BT_SEL 2  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &bt BT_CLR
-                &bt BT_CLR_ALL  &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                &trans          &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                &trans          &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-
+        opt {
+            bindings = < 
+                &none  &tog QWER  &none      &ext_power EP_OFF  &none  &none  &none  &none  &none  &none  &none  &none
+                &none  &none      &soft_off  &none              &none  &none  &none  &none  &none  &none  &none  &none
+                &none  &none      &none      &bt BT_CLR_ALL     &none  &none  &none  &none  &none  &none  &none  &none
+                &none  &none      &none      &none              &none  &none  &none  &none  &none  &none  &none  &none
             >;
         };
-
-        lock {
-            bindings = <
-
-                &none  &none  &none  &none   &none  &none  &none  &none  &none  &none  &none  &none
-                &none  &none  &none  &none   &none  &none  &none  &none  &none  &none  &none  &none
-                &none  &none  &none  &none   &none  &none  &none  &none  &none  &none  &none  &none
-                &none  &none  &none  &mo FN  &none  &none  &none  &none  &none  &none  &none  &none 
-
-            >;
-        }
     };
 };
 
