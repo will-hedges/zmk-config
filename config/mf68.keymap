@@ -1,7 +1,5 @@
-/*
- * Copyright (c) 2024 will-hedges <https://github.com/will-hedges>
- * SPDX-License-Identifier: MIT
-*/
+// Copyright (c) 2024 Will Hedges (https://github.com/will-hedges)
+// SPDX-License-Identifier: MIT
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
@@ -64,11 +62,12 @@
 
         opt_layer {
             bindings = <
-                &bt BT_CLR_ALL  &bt BT_SEL 0  &none  &none              &none  &none         &none  &none         &none  &none  &none  &none  &none  &none       &none  &none  
-                &none           &none         &none  &ext_power EP_OFF  &none  &none         &none  &out OUT_USB  &none  &none  &none  &none  &none  &none       &none  &none  
-                &none           &none         &none  &none              &none  &none         &none  &none         &none  &none  &none  &none         &none  
-                &none           &none         &none  &none              &none  &out OUT_BLE  &none  &none         &none  &none  &none                &none       &none
-                &none           &bootloader   &none                                          &none                                 &none  &none  &none    &none  &none  &none  
+                &bt BT_CLR_ALL  &bt BT_SEL 0  &bt BT_SEL 1  &none              &none  &none         &none  &none         &none  &none  &none  &none  &none  &none       &none  &none  
+                &none           &none         &none         &ext_power EP_OFF  &none  &none         &none  &out OUT_USB  &none  &none  &none  &none  &none  &none       &none  &none  
+                &none           &none         &none         &none              &none  &none         &none  &none         &none  &none  &none  &none         &none  
+                &none           &none         &none         &none              &none  &out OUT_BLE  &none  &none         &none  &none  &none                &none       &none
+                &none           &bootloader   &none                                                 &none                                 &none  &none  &none    &none  &none  &none
+                
             >;
         };
     };
