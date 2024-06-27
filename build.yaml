@@ -18,6 +18,7 @@
 #
 ---
 include:
-  - board: adafruit_kb2040
+  - board: nice60
+  - board: nice_nano_v2
     shield: mf68
   - board: planck_rev6
