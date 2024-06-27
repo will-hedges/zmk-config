@@ -17,5 +17,8 @@ manifest:
       remote: will-hedges
       # revision is the name of the branch you want to use
       revision: main
+    - name: ortho48-shield-module
+      remote: will-hedges
+      revision: main
   self:
     path: config
